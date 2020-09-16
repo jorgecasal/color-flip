@@ -12,6 +12,6 @@ btn.addEventListener('click', function(){
     document.body.style.backgroundColor = hexOnTheFly;
 })
 
-function getRandomNumber(){
+const getRandomNumber = () => {
     return Math.floor(Math.random()*hex.length);
 }
