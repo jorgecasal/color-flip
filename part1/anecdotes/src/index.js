@@ -23,17 +23,17 @@ const Button = (props) => (
 
 const App = (props) => {
 
-  const arrayCreator = Array.apply(null, new Array(anecdotes.length)).map(Number.prototype.valueOf,0)
-
-  const random =() => { return Math.floor(Math.random() * Math.floor(arrayCreator.length))
-  }
-
   const [selected, setSelected] = useState(0)
   const addSelected = newValue => {
     setSelected(newValue)
   }
   const anecdote = () => {
     addSelected(random)
+  }
+
+  const [votes, setVote] = useState(0)
+  const addVote = newValue => {
+    setVote(newValue)
   }
 
   const vote= () => {
@@ -43,18 +43,7 @@ const App = (props) => {
         points[i] += 1
       }
     }
-    console.log(anecdotes[selected])
-    console.log(points[selected])
-    console.log(points)
   }
-
-  const [votes, setVote] = useState(0)
-  const addVote = newValue => {
-    setVote(newValue)
-  }
-
-
-
 
   return (
     <div>
@@ -67,8 +56,6 @@ const App = (props) => {
   )
 }
 
-const points = [0, 0, 0, 0, 0, 0]
-
 const anecdotes = [
   'If it hurts, do it more often',
   'Adding manpower to a late software project makes it later!',
@@ -77,6 +64,14 @@ const anecdotes = [
   'Premature optimization is the root of all evil.',
   'Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.'
 ]
+
+const arrayCreator = Array.apply(null, new Array(anecdotes.length)).map(Number.prototype.valueOf,0)
+
+const random =() => { return Math.floor(Math.random() * Math.floor(arrayCreator.length))
+}
+
+const points = [...arrayCreator]
+
 
 ReactDOM.render(
   <App anecdotes={anecdotes} />,
