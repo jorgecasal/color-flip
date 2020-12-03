@@ -28,6 +28,7 @@ const App = (props) => {
     setSelected(newValue)
   }
   const anecdote = () => {
+    addTop(mostVoted)
     addSelected(random)
   }
 
@@ -37,6 +38,7 @@ const App = (props) => {
   }
 
   const vote= () => {
+    addTop(mostVoted)
     addVote(random)
     for (let i = 0; i < anecdotes.length; i++) {
       if (anecdotes[selected] === anecdotes[i]){
@@ -45,13 +47,21 @@ const App = (props) => {
     }
   }
 
+  const [tops, setTop] = useState(0)
+  const addTop = newValue => {
+    setTop(newValue)
+  }
+
   return (
     <div>
+    <h2>Anecdote of the day</h2>
       <Anecdote anecdote={anecdotes[selected]} />
       <Total total={points[selected]} />
       <Button handleClick={vote} text="vote" />
       <Button handleClick={anecdote} text="next anecdote" />
-
+      <h2>Anecdote with most votes</h2>
+      <Anecdote anecdote={anecdotes[tops]} />
+      <Total total={points[tops]} />
     </div>
   )
 }
@@ -71,6 +81,9 @@ const random =() => { return Math.floor(Math.random() * Math.floor(arrayCreator.
 }
 
 const points = [...arrayCreator]
+
+const mostVoted =() => { return  points.indexOf(Math.max.apply(window,points))
+}
 
 
 ReactDOM.render(
