@@ -7,11 +7,11 @@ const Header = ({ course }) => {
   }
   
   const Total = ({ course }) => {
-    const total = course.parts.reduce((s, parts) => {
-      return s + parts.exercises
+    const total = course.parts.reduce((s, p) => {
+      return s + p.exercises
     }, 0)
     return(
-      <p>Number of {total} exercises</p>
+      <h4>total of {total} exercises</h4>
     ) 
   }
   
@@ -22,7 +22,7 @@ const Header = ({ course }) => {
       let key = i
       return (
         <p key={key}> 
-        {name}{exercise}
+        {name} {exercise}
         </p>    
       )
     }
