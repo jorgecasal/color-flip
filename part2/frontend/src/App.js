@@ -24,6 +24,16 @@ const App = (props) => {
           <Note key={note.id} note={note} />
         )}
       </ul>
+      <ul>
+        {notes.map((note) => 
+          <Note key={note.id} note={note} />
+        )}
+      </ul>
+      <ul>
+        {notes.map((note) => 
+          <Note key={note.id} note={note} />
+        )}
+      </ul>
       <form onSubmit={addNote}>
         <input
           value={newNote}
