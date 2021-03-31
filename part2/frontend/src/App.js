@@ -7,9 +7,17 @@ const App = (props) => {
   const [newNote, setNewNote] = useState(
     'a new note...'
   ) 
-  const addNote = (e) => {
-    e.preventDefault()
-    console.log('clicked', e.target)
+  const addNote = (event) => {
+    event.preventDefault()
+    const noteObject = {
+      content: newNote,
+      date: new Date().toISOString(),
+      important: Math.random() < 0.5,
+      id: notes.length + 1,
+    }
+  
+    setNotes(notes.concat(noteObject))
+    setNewNote('')
   }
   const handleNoteChange = (event) => {
     console.log(event.target.value)
